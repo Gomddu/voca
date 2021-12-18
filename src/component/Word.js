@@ -2,15 +2,19 @@ import { useState } from "react";
 
 export default function Word({word}) {
     const [isShow, setIsShow] = useState(false)
+    const [isDone, setIsDone] = useState(word.isDone);
 
     function toggleShow(){
         setIsShow(!isShow);
     }
+    function toggleDone() {
+        setIsDone(!isDone);
+    }
 
     return (
-        <tr>
+        <tr className={isDone ? "off" : ""}>
             <td>
-                <input type="checkbox"></input>
+                <input type="checkbox" checked={word.isDone} onChange={toggleDone}/>
             </td>
             <td>
                 {word.eng}
@@ -22,10 +26,17 @@ export default function Word({word}) {
                 <button onClick={toggleShow}>
                     {isShow ? "숨기기" : "보기"}
                 </button>
-                <button class="btn_del">삭제</button>
+                <button className="btn_del">삭제</button>
             </td>
         </tr>
                         
     )
 
 }
+/**
+ * REST API
+ * create : POST
+ * read : GET
+ * update : PUT
+ * delete : DELETE
+ */
