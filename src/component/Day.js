@@ -1,4 +1,5 @@
 import dummy from "../db/data.json"
+import Word from './Word.js'
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Day() {
@@ -14,21 +15,8 @@ export default function Day() {
         <table>
             <tbody>
                 {wordList.map(word => (
-                    <tr key={word.id}>
-                        <td>
-                            <input type="checkbox"></input>
-                        </td>
-                        <td>
-                            {word.eng}
-                        </td>
-                        <td>
-                            {word.kor}
-                        </td>
-                        <td>
-                            <button>뜻보기</button>
-                            <button class="btn_del">삭제</button>
-                        </td>
-                    </tr>
+                    <Word word={word} key={word.id}/>
+                
                 ))}
             </tbody>
         </table>
